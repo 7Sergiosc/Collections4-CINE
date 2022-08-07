@@ -1,30 +1,31 @@
 package collections4.cine;
 
-import collections4.cine.entidades.Pelicula;
+import collections4.cine.servicios.ServicioCine;
 import collections4.cine.servicios.ServicioPelicula;
-import java.util.ArrayList;
+import collections4.cine.utilidades.Comparadores;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ServicioPelicula sp = new ServicioPelicula(); //Nace la clase ServicioPelicula
-        Scanner input = new Scanner(System.in).useDelimiter("\n");
-        boolean continuar1;
-        ArrayList<Pelicula> peliculas = new ArrayList<>();
+       Scanner input = new Scanner(System.in).useDelimiter("\n");
+       ServicioCine sc = new ServicioCine();
+       
+       sc.añadirPelicula();
+        System.out.print("Peliculas añadidas correctamente");input.next();
         
-        do{
-            peliculas.add(sp.crearPelicula());  //Crea y añade la pelicula a la ArrayList<> peliculas
-            
-            System.out.print("Desea crear otra pelicula? / SI/NO>"); String continuar = input.next();
-            
-            continuar1 = continuar.equalsIgnoreCase("SI"); // Si continuar1 = continuar.equalsIgnoreCase("SI")
-            
-        }while(continuar1==true);
-        //Mostrar todas las peliculas ArrayList<> peliculas
-        for (Pelicula pelicula : peliculas) {
-            System.out.println(pelicula.toString());
+        for (int i = 0; i < 10; i++) {
+            System.out.println("\n");
         }
         
-        System.out.println("*--------------*");
+        System.out.println("Lista de todas las películas:");
+       sc.mostrarPeliculas();
+       
+        System.out.println("\nPeliculas con duración mayor a 1H");
+       sc.mostrarPeliculaMayor1H();
+       
+        System.out.println("\nPeliculas ordenadas de mayor a menor");
+       sc.ordenarPorDuracionDesc();
+       sc.mostrarPeliculas();
     }
 }

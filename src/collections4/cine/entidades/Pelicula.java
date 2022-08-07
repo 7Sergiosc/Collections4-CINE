@@ -13,9 +13,18 @@ public class Pelicula {
 
     public Pelicula() {
     }
+
+    public Double getDuracion() {
+        return duracion;
+    }
+    
+    public boolean duracionMayor1H(){     
+     return (getDuracion()>1);
+    }
     
     @Override
     public String toString() {
         return "Pelicula{" + "titulo=" + titulo + ", director=" + director + ", duracion=" + duracion + '}';
     }
+
 }
